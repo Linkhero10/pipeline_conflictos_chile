@@ -33,8 +33,9 @@ from .config_loader import (
     ESCALAS_CONFLICTO, TIPOS_VINCULO_TRANSICION,
     SECTORES_ALIAS, PROMPT_COMPONENTS, MOTIVOS_EXCLUSION
 )
-from .mapeos_clasificacion import MapeoTipos, MapeoRegion
+from .maptu_clasificacion import MapeoTipos, MapeoRegion
 from .observabilidad import TrackerObservabilidad, LoggerEstructurado
+from .cache_manager import ResponseCache  # ✅ Importar Cache Manager
 
 # Inicializar tracker global (singleton)
 tracker = TrackerObservabilidad()
@@ -147,6 +148,14 @@ class AnalizadorIA:
         
         # Validar coherencia de mapeos al iniciar
         self._validar_coherencia_mapeos()
+        
+        # Inicializar caché de respuestas
+        try:
+            self.cache = ResponseCache()
+            logger.info("Caché de respuestas inicializado")
+        except Exception as e:
+            logger.warning(f"No se pudo inicializar caché: {e}")
+            self.cache = None
     
     def _validar_coherencia_mapeos(self):
         """
@@ -422,14 +431,30 @@ class AnalizadorIA:
     
     def _llamar_api_con_reintentos(self, prompt: str) -> dict:
         """
-        Llama a la API con reintentos usando tenacity si está disponible.
+        Llama a la API con reintentos, verificando caché primero.
         Devuelve dict con 'texto' y métricas de uso.
         """
-        # Si tenacity está disponible, usar decorador dinámico
+        # 1. Verificar caché
+        if self.cache:
+            modelo_key = self.model_name or "gemini-default"
+            cached = self.cache.get(prompt, modelo_key)
+            if cached:
+                logger.info("⚡ Respuesta recuperada del caché (sin costo API)")
+                cached['cached'] = True
+                return cached
+        
+        # 2. Llamar API
         if TENACITY_AVAILABLE:
-            return self._llamar_api_tenacity(prompt)
+            resultado = self._llamar_api_tenacity(prompt)
         else:
-            return self._llamar_api_simple(prompt)
+            resultado = self._llamar_api_simple(prompt)
+            
+        # 3. Guardar en caché
+        if self.cache and resultado:
+            modelo_key = self.model_name or "gemini-default"
+            self.cache.set(prompt, modelo_key, resultado)
+            
+        return resultado
     
     def _llamar_api_simple(self, prompt: str) -> dict:
         """

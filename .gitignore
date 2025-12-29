@@ -5,6 +5,7 @@ __pycache__/
 
 # Cache files
 *.db
+*.sqlite
 news_enrichment_cache.db
 enrichment_cache.json
 
