@@ -18,7 +18,6 @@ from pathlib import Path
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 from src.core.pipeline_orchestrator import FiltradorIA
-# from src.ui.reportes_handlers import generar_reporte_exhaustivo, analizar_reporte_con_ia
 
 # Configurar logger
 logger = logging.getLogger(__name__)
@@ -105,7 +104,6 @@ from .tabs.resultados import crear_tab_resultados
 from .tabs.graficos import crear_tab_graficos
 from .tabs.perfiles import crear_tab_perfiles
 from .tabs.reprocesamiento import crear_tab_reprocesamiento
-# from .tabs.mapas import crear_tab_mapas
 # Imports de features V3
 from .features_v3 import (
     configurar_logging,

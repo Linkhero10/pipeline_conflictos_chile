@@ -23,3 +23,6 @@ PyYAML>=6.0.0
 # Validación y resiliencia
 pydantic>=2.0.0
 tenacity>=8.2.0
+
+# Testing
+pytest>=7.4.0
