@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Cache files
+*.db
+news_enrichment_cache.db
+enrichment_cache.json
+
+# Excel data files (too large for git)
+*.xlsx
+*.xls
+
+# GeoJSON files (too large, download from Releases)
+data/geojson/
+
+# CSV/JSON data (large files)
+conflictos_*.csv
+conflictos_*.json
+
+# HTML maps (very large)
+mapa_conflictos_interactivo.html
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.venv/
+env/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Backups
+*_backup_*
+Copia de *
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Perfiles de usuario
+perfiles/

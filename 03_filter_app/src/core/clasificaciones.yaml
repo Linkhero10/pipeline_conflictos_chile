@@ -1,0 +1,1649 @@
+# ============================================================================
+# CLASIFICACIONES PARA CONFLICTOS SOCIOAMBIENTALES - TRANSICIÓN ENERGÉTICA
+# Proyecto FONDECYT - Chile
+# Versión: 2.0 (Diciembre 2025)
+# ============================================================================
+
+# Este archivo define todas las categorías de clasificación con sus definiciones,
+# criterios y ejemplos. Es la fuente única de verdad para el sistema de filtrado.
+
+# ============================================================================
+# DEFINICIÓN CENTRAL: CONFLICTO SOCIOAMBIENTAL VINCULADO A TRANSICIÓN ENERGÉTICA
+# ============================================================================
+
+definicion_transicion_energetica:
+  descripcion: |
+    La transición energética es el cambio desde un sistema energético basado en 
+    combustibles fósiles (carbón, petróleo, gas) hacia uno basado en energías 
+    limpias y renovables (solar, eólica, hidrógeno verde, etc.), incluyendo la 
+    extracción de minerales críticos necesarios para tecnologías limpias.
+  
+  incluye:
+    - "Generación de energía renovable (solar, eólica, geotérmica, hidroeléctrica)"
+    - "Cierre de centrales a carbón y gas (descarbonización)"
+    - "Hidrógeno verde y sus derivados"
+    - "Almacenamiento de energía (baterías)"
+    - "Electromovilidad e infraestructura de carga"
+    - "Minerales críticos para tecnologías limpias (litio, cobre) CON vínculo explícito"
+    - "Infraestructura de transmisión eléctrica"
+    - "Transición justa y reconversión laboral de trabajadores fósiles"
+    - "Justicia energética y acceso equitativo"
+    - "Zonas de sacrificio energéticas"
+    - "Desalación y uso de agua de mar para proyectos energéticos o minería crítica (H2V, litio)"
+  
+  excluye:
+    - "Minería sin vínculo con transición (oro, plata, hierro)"
+    - "Acuicultura y salmonicultura"
+    - "Forestación tradicional sin componente de biomasa"
+    - "Conflictos inmobiliarios"
+    - "Agricultura tradicional"
+    - "Conflictos urbanos no energéticos"
+    - "Conflictos laborales puros sin dimensión ambiental"
+
+# ============================================================================
+# DEFINICIÓN: ACCIÓN CONTENCIOSA
+# ============================================================================
+
+definicion_accion_contenciosa:
+  descripcion: |
+    Una acción contenciosa es un episodio ESPECÍFICO y VERIFICABLE donde uno o más 
+    actores realizan una conducta activa de oposición, demanda o protesta frente a 
+    otro actor en el contexto de un conflicto socioambiental.
+  
+  requisitos:
+    - "Acción concreta y observable (no solo opiniones o análisis)"
+    - "Actores identificables (quién hace qué contra quién)"
+    - "Carácter contencioso (oposición, demanda, reclamo)"
+    - "Relación directa con conflicto socioambiental"
+  
+  NO_es_accion_contenciosa:
+    - descripcion: "Malestar sin acción"
+      ejemplos:
+        - "Comunidades expresan preocupación por proyecto"
+        - "Habitantes temen impacto ambiental"
+        - "Alcaldesa manifiesta inquietud"
+      motivo_exclusion: "Motivo 7: Malestar sin acción"
+    
+    - descripcion: "Análisis o reportaje"
+      ejemplos:
+        - "Expertos analizan impacto de la minería"
+        - "Reportaje sobre historia de conflicto"
+      motivo_exclusion: "Motivo 8: Reportaje histórico"
+    
+    - descripcion: "Anuncio sin oposición"
+      ejemplos:
+        - "Empresa anuncia nuevo proyecto solar"
+        - "Gobierno presenta plan de descarbonización"
+      motivo_exclusion: "Motivo 9: Anuncio sin oposición"
+
+# ============================================================================
+# TIPOS DE CONFLICTO (17 tipos)
+# ============================================================================
+
+tipos_conflicto:
+  # --- CICLO DE VIDA: PROYECTOS ENERGÉTICOS ---
+  
+  - nombre: "Apertura de proyecto energético"
+    descripcion: |
+      Conflictos generados por proyectos energéticos NUEVOS que aún no están 
+      operando. Incluye fases de anuncio, evaluación ambiental (EIA/DIA), 
+      aprobación y construcción.
+    criterio_temporal: "El proyecto NO está operando aún"
+    palabras_clave:
+      - "proyecto nuevo"
+      - "evaluación ambiental"
+      - "en construcción"
+      - "propuesto"
+      - "planificado"
+    ejemplos:
+      - "Comunidades rechazan parque eólico en evaluación ambiental"
+      - "Protesta contra construcción de central solar"
+      - "Oposición a proyecto hidroeléctrico anunciado"
+    diferencia_con_operacion: |
+      Apertura = proyecto no genera energía aún
+      Operación = proyecto ya está generando energía
+
+  - nombre: "Operación de proyecto energético"
+    descripcion: |
+      Conflictos generados por proyectos energéticos que YA ESTÁN FUNCIONANDO.
+      Incluye impactos durante la operación como ruido, contaminación, afectación
+      a la vida cotidiana de comunidades aledañas.
+    criterio_temporal: "El proyecto YA está operando"
+    palabras_clave:
+      - "central en funcionamiento"
+      - "parque operativo"
+      - "durante la operación"
+      - "desde que empezó a funcionar"
+    ejemplos:
+      - "Vecinos denuncian ruido de aerogeneradores en funcionamiento"
+      - "Comunidad reclama por efecto estroboscópico de parque eólico"
+      - "Conflicto por uso de agua de central hidroeléctrica operativa"
+
+  - nombre: "Cierre de proyecto energético"
+    descripcion: |
+      Conflictos relacionados con el cierre o desmantelamiento de proyectos
+      energéticos, especialmente termoeléctricas a carbón (descarbonización).
+      Incluye conflictos por transición justa de trabajadores.
+    criterio_temporal: "El proyecto está cerrando o planea cerrar"
+    palabras_clave:
+      - "cierre"
+      - "desmantelamiento"
+      - "descarbonización"
+      - "fin de operaciones"
+      - "reconversión"
+    ejemplos:
+      - "Trabajadores de Bocamina protestan por cierre de termoeléctrica"
+      - "Comunidad exige plan de descontaminación post-cierre"
+      - "Sindicato demanda reconversión laboral tras cierre de central"
+
+  # --- CICLO DE VIDA: PROYECTOS MINEROS ---
+  
+  - nombre: "Apertura de proyecto minero"
+    descripcion: |
+      Conflictos por proyectos mineros NUEVOS (litio, cobre u otros minerales
+      vinculados a transición) en fases de exploración, evaluación o construcción.
+    criterio_temporal: "La faena minera NO está operando aún"
+    requiere_vinculo_transicion: true
+    ejemplos:
+      - "Comunidades atacameñas rechazan nuevo proyecto de litio"
+      - "Oposición a exploración minera en territorio indígena"
+      - "Protesta contra construcción de faena de cobre"
+
+  - nombre: "Operación de proyecto minero"
+    descripcion: |
+      Conflictos con faenas mineras YA EN OPERACIÓN. Incluye impactos ambientales
+      durante la extracción como uso de agua, contaminación, polvo.
+    criterio_temporal: "La faena minera YA está operando"
+    requiere_vinculo_transicion: true
+    ejemplos:
+      - "Comunidades demandan a SQM por sobreexplotación del salar"
+      - "Conflicto por uso de agua de Escondida"
+      - "Denuncia por contaminación de faena de cobre operativa"
+
+  - nombre: "Cierre de proyecto minero"
+    descripcion: |
+      Conflictos por cierre de faenas mineras, planes de abandono,
+      pasivos ambientales o reconversión de trabajadores mineros.
+    criterio_temporal: "La faena está cerrando o planea cerrar"
+    ejemplos:
+      - "Exigencia de remediación ambiental tras cierre de mina"
+      - "Trabajadores exigen plan de reconversión por cierre de faena"
+
+  # --- TEMAS ESPECÍFICOS ---
+  
+  - nombre: "Conflicto por minerales críticos"
+    descripcion: |
+      Conflictos donde el MINERAL CRÍTICO es el tema central del debate, no solo 
+      el contexto operacional. Usado para debates de política pública sobre el recurso.
+    cuando_usar: |
+      USAR SOLO CUANDO el conflicto es sobre:
+      - Debate sobre nacionalización/gobernanza del litio
+      - Política pública sobre minerales estratégicos
+      - Disputa sobre quién debe explotar el recurso (no cómo)
+    NO_usar_cuando: |
+      Si el conflicto es por IMPACTOS de la operación minera → usar ciclo de vida:
+      - Contaminación de faena → "Operación de proyecto minero"
+      - Rechazo a nueva faena → "Apertura de proyecto minero"  
+      - Cierre de faena → "Cierre de proyecto minero"
+    minerales_incluidos:
+      - "Litio (baterías, almacenamiento)"
+      - "Cobre (conductores, electromovilidad)"
+      - "Cobalto (baterías)"
+      - "Tierras raras (imanes permanentes)"
+    validacion_especial: |
+      Si la noticia menciona litio/cobre PERO NO menciona uso energético,
+      clasificar con vinculo_transicion="Probable" y requiere_revision_manual=true
+    ejemplos_usar:
+      - "Debate sobre creación de empresa nacional del litio"
+      - "Conflicto por adjudicación de CEOL (Contratos Especiales)"
+      - "Disputa sobre modelo de gobernanza del salar"
+    ejemplos_NO_usar:
+      - "Comunidades demandan a SQM por contaminación → usar Operación minero"
+      - "Rechazo a exploración de Albemarle → usar Apertura minero"
+
+  - nombre: "Conflicto por hidrógeno verde"
+    descripcion: |
+      Conflictos relacionados con proyectos de producción, almacenamiento,
+      transporte o uso de hidrógeno verde y sus derivados (amoníaco verde).
+    palabras_clave:
+      - "hidrógeno verde"
+      - "H2V"
+      - "electrolizador"
+      - "amoníaco verde"
+    prioridad_sobre_infraestructura: |
+      REGLA: Clasificar aquí cualquier infraestructura (puertos, desaladoras, 
+      ductos) cuyo fin EXCLUSIVO sea la cadena de valor del H2V.
+      - Puerto de amoníaco verde → "Conflicto por hidrógeno verde" (NO infraestructura)
+      - Desaladora para H2V → "Conflicto por hidrógeno verde" (NO infraestructura)
+      - Línea de transmisión general → "Conflicto por líneas de transmisión"
+    ejemplos:
+      - "Oposición a planta de hidrógeno verde en Magallanes"
+      - "Conflicto por uso de agua para producir H2V"
+      - "Rechazo a puerto de exportación de amoníaco verde"
+      - "Oposición a desaladora para proyecto de H2V"
+
+  - nombre: "Conflicto por líneas de transmisión"
+    descripcion: |
+      Conflictos por tendido eléctrico, subestaciones, torres de alta tensión
+      y redes de transmisión necesarias para conectar generación renovable.
+    incluye:
+      - "Líneas de alta tensión"
+      - "Subestaciones eléctricas"
+      - "Torres de transmisión"
+      - "Servidumbres eléctricas"
+    ejemplos:
+      - "Rechazo a línea Cardones-Polpaico"
+      - "Oposición a subestación en zona residencial"
+      - "Conflicto por servidumbre de torres de alta tensión"
+
+  - nombre: "Conflicto hídrico vinculado a energía"
+    descripcion: |
+      Conflictos donde el AGUA es el OBJETO CENTRAL de disputa legal/institucional,
+      no solo un impacto más entre otros de un proyecto energético/minero.
+    cuando_usar: |
+      USAR SOLO cuando el agua es el OBJETO DE DISPUTA LEGAL/INSTITUCIONAL:
+      - Disputa por derechos de agua entre múltiples actores ante DGA
+      - Conflicto por asignación de caudales en cuenca compartida
+      - Demanda específica sobre gestión hídrica (no sobre proyecto en general)
+    NO_usar_cuando: |
+      Si el conflicto es por IMPACTOS OPERACIONALES de un proyecto → usar ciclo de vida:
+      - "Minera seca humedal" → usar "Operación de proyecto minero" (agua es UN impacto)
+      - "Central consume agua" → usar "Operación de proyecto energético" (agua es UN impacto)
+    regla_discriminacion: |
+      PREGUNTA CLAVE: ¿El conflicto es ESPECÍFICAMENTE sobre derechos/gestión del agua,
+      o el agua es uno de varios impactos de un proyecto identificable?
+      - Si hay proyecto específico como único demandado → usar ciclo de vida del proyecto
+      - Si hay disputa multi-actor sobre el recurso hídrico → usar "Conflicto hídrico"
+    ejemplos_usar:
+      - "Agricultores y minera disputan derechos de agua ante DGA"
+      - "Conflicto legal por asignación de caudales en río Loa"
+      - "Comunidades demandan reforma de código de aguas por impacto de minería"
+    ejemplos_NO_usar:
+      - "SQM acusada de secar vegas → usar Operación minero (proyecto identificable)"
+      - "Hidroeléctrica afecta caudal → usar Operación energético (proyecto identificable)"
+
+  # --- DIMENSIÓN TERRITORIAL ---
+  
+  - nombre: "Conflicto territorial/indígena"
+    descripcion: |
+      Conflictos donde pueblos originarios defienden sus territorios ancestrales
+      frente a proyectos energéticos o mineros. Incluye consulta indígena,
+      consentimiento previo, lugares sagrados.
+    actores_tipicos:
+      - "Comunidades mapuche"
+      - "Comunidades atacameñas"
+      - "Comunidades diaguitas"
+      - "Comunidades colla"
+      - "Pueblo rapa nui"
+    derechos_invocados:
+      - "Convenio 169 OIT"
+      - "Consulta indígena"
+      - "Consentimiento libre, previo e informado"
+      - "Territorio ancestral"
+    ejemplos:
+      - "Comunidades mapuche rechazan parque eólico en territorio ancestral"
+      - "Pueblo atacameño exige consulta indígena por proyecto de litio"
+      - "Conflicto por afectación a sitio ceremonial"
+
+  - nombre: "Conflicto por uso del suelo"
+    descripcion: |
+      Conflictos por competencia entre proyectos energéticos y otros usos
+      del territorio: agricultura, ganadería, conservación, turismo.
+      Incluye especulación de tierras ("green grabbing") para futuros proyectos.
+    tipos_competencia:
+      - "Energía vs Agricultura"
+      - "Energía vs Conservación"
+      - "Energía vs Turismo"
+      - "Energía vs Desarrollo urbano"
+      - "Especulación de tierras para futuros proyectos energéticos"
+      - "Superposición de concesiones o servidumbres con tierras indígenas/comunitarias"
+    ejemplos:
+      - "Agricultores rechazan parque solar en terrenos cultivables"
+      - "Conflicto entre central y área de conservación"
+      - "Oposición a parque eólico en zona turística"
+      - "Comunidades denuncian compra masiva de terrenos para futuros parques eólicos"
+      - "Conflicto por servidumbres de paso impuestas para líneas de transmisión"
+
+  - nombre: "Conflicto por biodiversidad/ecosistemas"
+    descripcion: |
+      Conflictos centrados en la protección de flora, fauna, ecosistemas
+      y servicios ecosistémicos frente a proyectos energéticos o mineros.
+    impactos_tipicos:
+      - "Afectación a rutas migratorias de aves (eólica)"
+      - "Fragmentación de hábitat"
+      - "Impacto en humedales"
+      - "Afectación a especies protegidas"
+    ejemplos:
+      - "Ambientalistas denuncian muerte de aves en parque eólico"
+      - "Conflicto por afectación a humedal protegido"
+      - "Oposición a proyecto en área de biodiversidad"
+
+  - nombre: "Zonas de sacrificio"
+    descripcion: |
+      Conflictos en territorios históricamente sobrecargados de contaminación
+      industrial y energética, donde comunidades exigen justicia ambiental.
+    zonas_tipicas_chile:
+      - "Quintero-Puchuncaví"
+      - "Tocopilla"
+      - "Huasco"
+      - "Mejillones"
+      - "Coronel"
+    temas_asociados:
+      - "Contaminación acumulada"
+      - "Enfermedades"
+      - "Cierre de industrias contaminantes"
+      - "Remediación ambiental"
+    ejemplos:
+      - "Vecinos de Quintero exigen cierre de termoeléctricas"
+      - "Protesta por contaminación en Tocopilla"
+      - "Demanda de remediación en zona de sacrificio"
+
+  # --- DIMENSIÓN SOCIAL ---
+  
+  - nombre: "Transición justa/Reconversión laboral"
+    descripcion: |
+      Conflictos centrados en los impactos laborales de la transición energética:
+      pérdida de empleos en industrias fósiles, demandas de reconversión,
+      capacitación, indemnizaciones.
+    actores_tipicos:
+      - "Sindicatos de trabajadores del carbón"
+      - "Trabajadores de termoeléctricas"
+      - "Comunidades dependientes de industria fósil"
+    demandas_tipicas:
+      - "Planes de reconversión laboral"
+      - "Capacitación para nuevos empleos"
+      - "Indemnizaciones justas"
+      - "Empleo local en proyectos renovables"
+    ejemplos:
+      - "Sindicato de Bocamina exige plan de transición justa"
+      - "Trabajadores demandan reconversión tras cierre de central"
+      - "Protesta por falta de empleo local en parque eólico"
+
+  - nombre: "Justicia energética/Acceso a energía"
+    descripcion: |
+      Conflictos por la distribución equitativa de beneficios y costos de la
+      transición: acceso a energía, tarifas, pobreza energética, participación
+      de comunidades en beneficios de proyectos.
+    temas:
+      - "Pobreza energética"
+      - "Tarifas eléctricas"
+      - "Acceso a energía en zonas rurales"
+      - "Distribución de beneficios"
+      - "Servidumbres y compensaciones"
+    ejemplos:
+      - "Comunidad exige acceso a electricidad generada en su territorio"
+      - "Protesta por alza de tarifas eléctricas"
+      - "Demanda de compensaciones por servidumbre de parque eólico"
+
+  - nombre: "Residuos de tecnología limpia"
+    descripcion: |
+      Conflictos por la disposición, reciclaje o abandono de residuos de
+      tecnologías de transición: paneles solares, aspas de aerogeneradores,
+      baterías de litio en desuso.
+    tipos_residuos:
+      - "Paneles solares en desuso"
+      - "Aspas de aerogeneradores"
+      - "Baterías de litio"
+      - "Equipos electrónicos de centrales"
+    ejemplos:
+      - "Oposición a planta de reciclaje de baterías"
+      - "Conflicto por disposición de paneles solares"
+      - "Demanda por abandono de aspas de aerogeneradores"
+
+# ============================================================================
+# TIPOS DE ACCIÓN (16 tipos)
+# ============================================================================
+
+tipos_accion:
+  # --- COMUNICACIONALES (baja intensidad) ---
+  
+  - nombre: "Declaración pública/Carta"
+    descripcion: |
+      Comunicados formales, cartas abiertas, pronunciamientos públicos,
+      declaraciones a medios. Acción comunicacional sin movilización física.
+    intensidad: "baja"
+    requiere_presencia_fisica: false
+    criterio_temporal: "Acción PUNTUAL, única ocasión (no sostenida en el tiempo)"
+    formatos:
+      - "Carta abierta"
+      - "Comunicado de prensa"
+      - "Declaración pública"
+      - "Pronunciamiento"
+    diferencia_con_campana: |
+      Si la carta/declaración es parte de una serie de acciones coordinadas
+      durante 2+ semanas → usar "Campaña mediática" en su lugar
+    ejemplos:
+      - "Comunidad emite declaración rechazando proyecto (acción única)"
+      - "ONG publica carta abierta a autoridades (sin campaña posterior)"
+      - "Organizaciones firman pronunciamiento conjunto (evento puntual)"
+
+  - nombre: "Campaña mediática/Sensibilización"
+    descripcion: |
+      Acciones organizadas para influir en la opinión pública a través de
+      medios de comunicación, redes sociales, eventos informativos.
+    criterio_temporal: "Acción SOSTENIDA en el tiempo (mínimo 2 semanas)"
+    criterio_alcance: "Múltiples acciones coordinadas (no evento único)"
+    incluye:
+      - "Campañas en redes sociales"
+      - "Conferencias de prensa seriadas"
+      - "Documentales"
+      - "Eventos informativos múltiples"
+      - "Denuncia de greenwashing"
+    diferencia_con_declaracion: |
+      Si es un solo comunicado/carta sin seguimiento → usar "Declaración pública"
+      Si hay múltiples acciones durante 2+ semanas → usar "Campaña mediática"
+    ejemplos:
+      - "ONG lanza campaña #NoAlProyecto con 10 videos en 1 mes"
+      - "Serie de conferencias de prensa semanales durante 3 semanas"
+      - "Campaña sostenida de sensibilización en redes sociales"
+
+  # --- ADMINISTRATIVAS ---
+  
+  - nombre: "Denuncia a autoridades"
+    descripcion: |
+      Presentación formal de quejas, denuncias o solicitudes ante autoridades
+      políticas o administrativas (no judiciales).
+    destinatarios_tipicos:
+      - "Superintendencia del Medio Ambiente (SMA)"
+      - "Servicio de Evaluación Ambiental (SEA)"
+      - "Municipalidades"
+      - "Intendencias/Delegaciones"
+      - "Ministerios"
+    ejemplos:
+      - "Comunidad presenta denuncia ante SMA"
+      - "Vecinos solicitan fiscalización a autoridad ambiental"
+      - "Organizaciones piden audiencia con Ministro"
+
+  - nombre: "Participación en proceso ambiental"
+    descripcion: |
+      Participación formal en procesos de Evaluación de Impacto Ambiental
+      (EIA) o Declaración de Impacto Ambiental (DIA): observaciones,
+      alegaciones, solicitud de consulta indígena.
+    mecanismos:
+      - "Observaciones ciudadanas a EIA/DIA"
+      - "Solicitud de consulta indígena"
+      - "Reclamaciones administrativas"
+      - "Participación en PAC (Participación Ciudadana)"
+    ejemplos:
+      - "Comunidad presenta 500 observaciones a EIA de proyecto"
+      - "Pueblo indígena solicita consulta según Convenio 169"
+      - "Organizaciones reclaman ante Comité de Ministros"
+
+  # --- LEGALES ---
+  
+  - nombre: "Recurso judicial"
+    descripcion: |
+      Acciones legales formales ante tribunales: recursos de protección,
+      demandas civiles, querellas, acciones constitucionales.
+    tipos:
+      - "Recurso de protección"
+      - "Demanda civil por daño ambiental"
+      - "Recurso de reclamación"
+      - "Acción constitucional"
+      - "Querella criminal"
+    ejemplos:
+      - "Comunidad interpone recurso de protección contra proyecto"
+      - "ONG presenta demanda por daño ambiental"
+      - "Vecinos recurren a Corte Suprema"
+
+  # --- ECONÓMICAS ---
+  
+  - nombre: "Boicot/Desinversión"
+    descripcion: |
+      Acciones económicas para presionar a empresas: boicot de productos,
+      campañas de desinversión, presión a financistas.
+    tipos:
+      - "Boicot de productos"
+      - "Campañas de desinversión"
+      - "Presión a bancos financistas"
+      - "Presión a accionistas"
+    ejemplos:
+      - "Activistas llaman a boicotear productos de empresa"
+      - "Campaña para que bancos retiren financiamiento"
+      - "Presión a fondos de inversión para desinvertir"
+
+  # --- MOVILIZACIÓN (media intensidad) ---
+  
+  - nombre: "Protesta/Manifestación"
+    descripcion: |
+      Movilizaciones colectivas en espacio público: marchas, concentraciones,
+      vigilias, cacerolazos. Requieren presencia física pero no son disruptivas.
+    tipos:
+      - "Marcha"
+      - "Concentración"
+      - "Vigilia"
+      - "Cacerolazo"
+      - "Caravana"
+    ejemplos:
+      - "Miles marchan contra proyecto en centro de la ciudad"
+      - "Vecinos realizan vigilia frente a sede de empresa"
+      - "Caravana de vehículos en protesta por contaminación"
+
+  - nombre: "Desobediencia civil"
+    descripcion: |
+      Acciones deliberadas y públicas que desobedecen leyes o regulaciones
+      específicas de forma no violenta para visibilizar injusticias.
+    criterio_duracion: "Acción BREVE (<4 horas)"
+    criterio_objetivo: "SIMBÓLICA, busca visibilidad mediática, no paralizar operaciones"
+    caracteristicas:
+      - "No violenta"
+      - "Deliberada y pública"
+      - "Acepta consecuencias legales"
+      - "Busca cambio social"
+    tipos:
+      - "Sentadas"
+      - "Encadenamientos"
+      - "Bloqueos simbólicos breves"
+      - "Ocupaciones pacíficas cortas"
+    diferencia_con_bloqueo: |
+      Si la acción dura <4 horas y es simbólica → "Desobediencia civil"
+      Si dura 4+ horas y busca paralizar operaciones → "Cierre de rutas/Bloqueo"
+    ejemplos:
+      - "Activistas se encadenan 2 horas a maquinaria (simbólico)"
+      - "Sentada de 1 hora en acceso a faena (visibilidad mediática)"
+      - "Ocupación simbólica breve de oficinas de empresa"
+
+  # --- DISRUPTIVAS (alta intensidad) ---
+  
+  - nombre: "Huelga de hambre"
+    descripcion: |
+      Ayuno voluntario como forma de protesta extrema para llamar la atención
+      sobre una causa. Puede ser individual o colectivo.
+    caracteristicas:
+      - "Alta visibilidad mediática"
+      - "Acción individual o de pequeño grupo"
+      - "Riesgo para la salud"
+      - "Último recurso"
+    ejemplos:
+      - "Dirigente inicia huelga de hambre contra proyecto"
+      - "Comuneros ayunan frente a La Moneda"
+
+  - nombre: "Cierre de rutas/Bloqueo"
+    descripcion: |
+      Interrupción del tránsito vehicular en carreteras, caminos o accesos
+      como forma de presión. Genera disrupción significativa.
+    criterio_duracion: "Acción PROLONGADA (4+ horas)"
+    criterio_objetivo: "DISRUPTIVA, busca paralizar operaciones, no solo visibilidad"
+    tipos:
+      - "Corte de ruta"
+      - "Bloqueo de acceso a faena"
+      - "Barricadas"
+    diferencia_con_desobediencia: |
+      Si la acción dura <4 horas y es simbólica → "Desobediencia civil"
+      Si dura 4+ horas y busca paralizar operaciones → "Cierre de rutas/Bloqueo"
+    ejemplos:
+      - "Comunidades cortan ruta de acceso a minera por 3 días"
+      - "Bloqueo de 12 horas a camiones de proyecto"
+      - "Barricadas mantenidas durante toda la semana"
+
+  - nombre: "Toma de terreno/infraestructura"
+    descripcion: |
+      Ocupación física prolongada de terrenos, instalaciones o infraestructura
+      del proyecto o de instituciones. Mayor intensidad que ocupación simbólica.
+    tipos:
+      - "Toma de terreno"
+      - "Ocupación de instalaciones"
+      - "Toma de oficinas"
+    ejemplos:
+      - "Comunidad se toma terreno destinado a proyecto"
+      - "Trabajadores ocupan instalaciones de empresa"
+      - "Manifestantes toman oficinas del SEA"
+
+  - nombre: "Huelga/Paralización"
+    descripcion: |
+      Cese de actividades laborales organizado por trabajadores.
+      Puede ser legal o ilegal, total o parcial.
+    tipos:
+      - "Huelga legal"
+      - "Paro ilegal"
+      - "Paralización de faenas"
+      - "Paro nacional"
+    ejemplos:
+      - "Trabajadores de termoeléctrica van a huelga"
+      - "Sindicato paraliza faena minera"
+      - "Paro de trabajadores por condiciones laborales"
+
+  # --- NEGOCIACIÓN ---
+  
+  - nombre: "Diálogo/Mesa de trabajo"
+    descripcion: |
+      Participación en instancias de negociación formal o informal con
+      empresas, gobierno u otros actores. Busca solución negociada.
+    tipos:
+      - "Mesa de diálogo"
+      - "Mesa técnica"
+      - "Mediación"
+      - "Negociación directa"
+    nota: |
+      Usar solo cuando la noticia destaca el PROCESO de diálogo como acción,
+      no cuando es mero contexto.
+    ejemplos:
+      - "Comunidad acepta participar en mesa de diálogo"
+      - "Inicio de mediación entre empresa y vecinos"
+      - "Mesa técnica logra acuerdos parciales"
+
+  # --- INSTITUCIONALES ---
+  
+  - nombre: "Sanción administrativa"
+    descripcion: |
+      Acción de AUTORIDADES (no de comunidades) que imponen sanciones,
+      multas o medidas contra proyectos tras fiscalización.
+    NOTA_ESPECIAL: |
+      CASO ESPECIAL: Aquí el actor demandante es el ESTADO (SMA, Tribunales Ambientales).
+      INCLUIR si la sanción es CONSECUENCIA de denuncias previas de comunidades o tiene 
+      contexto de conflicto social (ej: comunidad denunció y SMA sancionó).
+      EXCLUIR (Motivo 11) si es fiscalización de rutina sin contexto de conflicto social.
+    ejecutor: "Autoridad del Estado (SMA, Tribunales Ambientales, Contraloría, SEA)"
+    actor_demandante_especial: |
+      En este tipo de acción, el actor_demandante debe ser la AUTORIDAD que sanciona.
+      Si hubo denuncia previa de comunidad, mencionarla en el campo 'notas'.
+    tipos:
+      - "Multa"
+      - "Clausura"
+      - "Suspensión de operaciones"
+      - "Revocación de permiso"
+      - "Formulación de cargos"
+    ejemplos_incluir:
+      - "SMA multa a empresa tras denuncias de comunidad por incumplimientos"
+      - "Tribunal Ambiental ordena paralización tras recurso de comunidades"
+      - "SMA sanciona a minera por sobreextracción denunciada por comunidades"
+    ejemplos_excluir:
+      - "SMA fiscaliza de rutina y encuentra incumplimientos menores (Motivo 11)"
+      - "Inspección programada sin contexto de conflicto (Motivo 11)"
+
+  - nombre: "Consulta ciudadana"
+    descripcion: |
+      Mecanismos de participación directa de la ciudadanía para expresar
+      opinión sobre proyectos o políticas.
+    tipos:
+      - "Plebiscito comunal"
+      - "Consulta ciudadana"
+      - "Cabildos"
+      - "Votación simbólica"
+    ejemplos:
+      - "Plebiscito comunal rechaza proyecto eólico"
+      - "Consulta ciudadana muestra oposición mayoritaria"
+      - "Cabildos territoriales debaten proyecto"
+
+  # --- VIOLENTAS ---
+  
+  - nombre: "Acción violenta"
+    descripcion: |
+      Acciones que implican destrucción de propiedad, uso de fuego,
+      sabotaje o violencia física. Máxima intensidad.
+    tipos:
+      - "Quema de maquinaria"
+      - "Sabotaje de instalaciones"
+      - "Ataques incendiarios"
+      - "Destrucción de equipos"
+    ejemplos:
+      - "Desconocidos queman maquinaria de proyecto"
+      - "Atentado incendiario contra instalaciones"
+      - "Sabotaje a línea de transmisión"
+
+# ============================================================================
+# ACTORES DEMANDANTES (11 tipos)
+# ============================================================================
+
+actores_demandante:
+  - nombre: "Comunidades indígenas"
+    descripcion: |
+      Pueblos originarios organizados que defienden sus territorios,
+      recursos naturales o derechos culturales frente a proyectos.
+    pueblos_chile:
+      - "Mapuche"
+      - "Atacameño/Lickanantay"
+      - "Diaguita"
+      - "Colla"
+      - "Quechua"
+      - "Aymara"
+      - "Rapa Nui"
+      - "Kawésqar"
+      - "Yagán"
+    organizaciones_tipicas:
+      - "Comunidades indígenas (ley 19.253)"
+      - "Asociaciones indígenas"
+      - "Consejos de pueblos"
+      - "Coordinadoras territoriales"
+    ejemplos:
+      - "Comunidad Indígena de Toconao"
+      - "Consejo de Pueblos Atacameños"
+      - "Comunidades mapuche del Budi"
+
+  - nombre: "Organizaciones territoriales"
+    descripcion: |
+      Organizaciones de base territorial NO indígenas: juntas de vecinos,
+      comités de defensa, coordinadoras locales.
+    tipos:
+      - "Juntas de vecinos"
+      - "Comités de defensa"
+      - "Coordinadoras territoriales"
+      - "Asambleas ciudadanas"
+    ejemplos:
+      - "Junta de Vecinos de Puchuncaví"
+      - "Comité de Defensa del Valle del Huasco"
+      - "Coordinadora No Alto Maipo"
+
+  - nombre: "ONGs ambientalistas"
+    descripcion: |
+      Organizaciones no gubernamentales dedicadas a la defensa del
+      medio ambiente, conservación o justicia ambiental.
+    tipos:
+      - "Fundaciones ambientales"
+      - "Organizaciones conservacionistas"
+      - "ONGs de justicia ambiental"
+    ejemplos_chile:
+      - "FIMA (Fiscalía del Medio Ambiente)"
+      - "Greenpeace Chile"
+      - "Terram"
+      - "Chile Sustentable"
+      - "CODEFF"
+    ejemplos_internacionales:
+      - "Greenpeace"
+      - "WWF"
+      - "Sierra Club"
+
+  - nombre: "Academia/Expertos"
+    descripcion: |
+      Universidades, centros de investigación, científicos o expertos
+      que participan en conflictos con argumentos técnicos.
+    tipos:
+      - "Universidades"
+      - "Centros de investigación"
+      - "Académicos individuales"
+      - "Colegios profesionales"
+    ejemplos:
+      - "Universidad de Chile presenta estudio"
+      - "Científicos cuestionan EIA"
+      - "Colegio Médico denuncia impacto en salud"
+
+  - nombre: "Organismos del Estado"
+    descripcion: |
+      Instituciones estatales que actúan como demandantes: municipios,
+      gobiernos regionales, servicios públicos que se oponen a proyectos.
+    tipos:
+      - "Municipalidades"
+      - "Gobiernos regionales"
+      - "Servicios públicos"
+      - "Empresas públicas"
+    nota: "Incluye cuando el Estado actúa CONTRA un proyecto privado"
+    ejemplos:
+      - "Municipalidad de Freirina se opone a proyecto"
+      - "Gobierno Regional presenta observaciones"
+      - "SAG rechaza proyecto por impacto agrícola"
+
+  - nombre: "Sindicatos/Trabajadores"
+    descripcion: |
+      Organizaciones de trabajadores que demandan por condiciones laborales,
+      transición justa o en solidaridad con comunidades.
+    tipos:
+      - "Sindicatos de empresa"
+      - "Federaciones sindicales"
+      - "Confederaciones"
+      - "Trabajadores no sindicalizados"
+    ejemplos:
+      - "Sindicato de trabajadores de Bocamina"
+      - "Federación Minera de Chile"
+      - "Trabajadores de termoeléctrica"
+
+  - nombre: "Empresas"
+    descripcion: |
+      Empresas que actúan como demandantes, generalmente en conflictos
+      con otras empresas o con el Estado.
+    casos_tipicos:
+      - "Empresa afectada por proyecto de otra empresa"
+      - "Empresa que reclama contra regulación estatal"
+      - "Competencia por recursos (agua, suelo)"
+    ejemplos:
+      - "Agricultores (empresa) demandan a minera por agua"
+      - "Empresa turística rechaza proyecto eólico"
+
+  - nombre: "Gremios empresariales"
+    descripcion: |
+      Asociaciones de empresarios que actúan colectivamente.
+    tipos:
+      - "Asociaciones gremiales"
+      - "Cámaras de comercio"
+      - "Federaciones empresariales"
+    ejemplos:
+      - "Asociación de Agricultores rechaza proyecto"
+      - "Cámara de Turismo se opone a central"
+
+  - nombre: "Ciudadanos individuales"
+    descripcion: |
+      Personas naturales que actúan a título personal, no representando
+      organizaciones.
+    ejemplos:
+      - "Vecino interpone recurso de protección"
+      - "Propietario afectado demanda a empresa"
+
+  - nombre: "Coalición de actores"
+    descripcion: |
+      Alianzas formales entre diferentes tipos de actores que actúan
+      conjuntamente en un conflicto.
+    nota: |
+      Usar cuando hay alianza EXPLÍCITA entre tipos diferentes de actores.
+      Si solo hay un tipo principal, usar ese tipo.
+    ejemplos:
+      - "Comunidades, ONGs y academia presentan recurso conjunto"
+      - "Alianza de vecinos, indígenas y sindicatos"
+
+  - nombre: "Otro"
+    descripcion: |
+      Actores que no encajan en las categorías anteriores.
+    nota: "Usar con moderación. Si se usa, especificar en notas."
+
+# ============================================================================
+# ACTORES DEMANDADOS (9 tipos)
+# ============================================================================
+
+actores_demandado:
+  - nombre: "Empresa energética"
+    descripcion: |
+      Empresas dedicadas a generación, transmisión o distribución de energía.
+    incluye:
+      - "Generadoras eléctricas"
+      - "Transmisoras"
+      - "Distribuidoras"
+      - "Empresas de hidrógeno verde"
+    ejemplos_chile:
+      - "Enel"
+      - "AES Gener"
+      - "Colbún"
+      - "Engie"
+      - "Acciona"
+      - "Mainstream"
+
+  - nombre: "Empresa minera"
+    descripcion: |
+      Empresas dedicadas a extracción de minerales, especialmente
+      litio, cobre y otros minerales vinculados a transición.
+    ejemplos_chile:
+      - "SQM"
+      - "Albemarle"
+      - "BHP"
+      - "Anglo American"
+      - "Antofagasta Minerals"
+      - "Lundin Mining"
+
+  - nombre: "Empresa pública (estatal)"
+    descripcion: |
+      Empresas de propiedad estatal total o mayoritaria.
+    ejemplos_chile:
+      - "Codelco"
+      - "ENAP"
+      - "ENAMI"
+    regla_jerarquia: |
+      PRIORIDAD: Clasificar por SECTOR PRODUCTIVO, no por propiedad.
+      - Codelco → usar "Empresa minera" (interesa comportamiento sectorial)
+      - ENAP → usar "Empresa energética" (interesa comportamiento sectorial)
+      - ENAMI → usar "Empresa minera"
+      EXCEPCIÓN: Usar "Empresa pública" SOLO si el conflicto es específicamente 
+      sobre el ROL DEL ESTADO como propietario (ej: debate sobre privatización)
+
+  - nombre: "Empresa privada (otra)"
+    descripcion: |
+      Empresas privadas no energéticas ni mineras involucradas en conflictos
+      de transición energética.
+    incluye:
+      - "Constructoras de proyectos energéticos"
+      - "Empresas de servicios"
+      - "Proveedores"
+
+  - nombre: "Organismos del Estado"
+    descripcion: |
+      Instituciones estatales que son demandadas por comunidades
+      u organizaciones.
+    incluye:
+      - "Ministerios"
+      - "Servicios públicos (SEA, SMA)"
+      - "Gobiernos regionales"
+      - "Municipalidades"
+    ejemplos:
+      - "Servicio de Evaluación Ambiental (SEA)"
+      - "Ministerio de Energía"
+      - "Superintendencia del Medio Ambiente"
+
+  - nombre: "Empresa industrial"
+    descripcion: |
+      Industrias no energéticas ni mineras cuyos conflictos tienen
+      componente de transición energética.
+    incluye:
+      - "Industrias contaminantes en zonas de sacrificio"
+      - "Industrias que afectan proyectos energéticos"
+
+  - nombre: "Financiadores/Inversionistas"
+    descripcion: |
+      Bancos, fondos de inversión u otros financiadores de proyectos
+      conflictivos.
+    tipos:
+      - "Bancos comerciales"
+      - "Bancos de desarrollo"
+      - "Fondos de inversión"
+      - "Accionistas"
+    ejemplos:
+      - "Banco financia proyecto rechazado por comunidades"
+      - "Fondo de pensiones invierte en empresa contaminante"
+
+  - nombre: "Comunidades"
+    descripcion: |
+      Casos excepcionales donde comunidades son demandadas por empresas
+      o el Estado.
+    nota: "Caso raro. Usar con precaución."
+    ejemplos:
+      - "Empresa demanda a comunidad por bloqueo"
+      - "Estado acusa a dirigentes por toma"
+
+  - nombre: "Otro"
+    descripcion: |
+      Actores demandados que no encajan en las categorías anteriores.
+    nota: "Usar con moderación. Si se usa, especificar en notas."
+
+# ============================================================================
+# ESCALAS DE CONFLICTO (5 tipos)
+# ============================================================================
+
+escalas_conflicto:
+  - nombre: "Local"
+    descripcion: "Afecta a una localidad específica o vecindario"
+    ejemplos:
+      - "Conflicto en un sector rural específico"
+      - "Afectación a un barrio"
+
+  - nombre: "Comunal"
+    descripcion: "Afecta a una o más comunas completas"
+    ejemplos:
+      - "Conflicto que moviliza a toda la comuna"
+      - "Afectación a múltiples localidades de una comuna"
+
+  - nombre: "Provincial"
+    descripcion: "Afecta a varias comunas de una provincia"
+    ejemplos:
+      - "Conflicto que abarca varias comunas de la provincia"
+
+  - nombre: "Regional"
+    descripcion: "Afecta a una región completa o varias provincias"
+    ejemplos:
+      - "Conflicto regional por proyecto de gran escala"
+      - "Movilización a nivel regional"
+
+  - nombre: "Nacional"
+    descripcion: "Tiene repercusiones a nivel país o involucra actores nacionales"
+    criterios_objetivos:
+      - "Involucra autoridad nacional (Presidente, Ministro, Subsecretario)"
+      - "Afecta a 3+ regiones simultáneamente"
+      - "Recurso ante Corte Suprema o Tribunal Constitucional"
+      - "Protesta/acción coordinada en 5+ ciudades"
+      - "Cobertura en medios nacionales principales (La Tercera, El Mercurio, TVN, CNN Chile)"
+    nota: "Debe cumplir AL MENOS UN criterio objetivo para clasificar como Nacional"
+    ejemplos:
+      - "Ministro de Energía interviene en conflicto"
+      - "Corte Suprema falla recurso de protección"
+      - "Marchas simultáneas en Santiago, Valparaíso y Concepción"
+
+# ============================================================================
+# TIPOS DE VÍNCULO CON TRANSICIÓN (3 tipos)
+# ============================================================================
+
+tipos_vinculo_transicion:
+  - nombre: "Directo"
+    descripcion: |
+      Existe mención EXPLÍCITA de uso o destino energético de la actividad
+      conflictiva.
+    criterio: "La noticia menciona explícitamente el vínculo con transición"
+    requiere_revision_manual: false
+    ejemplos:
+      - "Litio para baterías de vehículos eléctricos"
+      - "Cobre para paneles solares"
+      - "Parque eólico para red nacional"
+      - "Cierre de termoeléctrica por descarbonización"
+
+  - nombre: "Indirecto"
+    descripcion: |
+      El conflicto es consecuencia de un proyecto energético pero la
+      noticia no enfatiza el vínculo energético.
+    criterio: "Impacto territorial/hídrico/social causado por proyecto energético"
+    requiere_revision_manual: false
+    ejemplos:
+      - "Conflicto hídrico causado por central hidroeléctrica"
+      - "Afectación a comunidad por línea de transmisión"
+      - "Impacto en biodiversidad de parque eólico"
+
+  - nombre: "Probable"
+    descripcion: |
+      Involucra mineral crítico (litio, cobre) o empresa del sector,
+      pero NO hay mención explícita de uso energético.
+    criterio: "Mineral crítico o empresa conocida, SIN mención de destino"
+    requiere_revision_manual: true
+    aplicar_cuando:
+      - "Conflicto con SQM, Albemarle sin mencionar baterías"
+      - "Conflicto con Codelco sin mencionar uso eléctrico"
+      - "Litio o cobre mencionado pero sin destino específico"
+    ejemplos:
+      - "Comunidades demandan a SQM por contaminación"
+      - "Conflicto por agua con Albemarle"
+      - "Codelco enfrenta rechazo en Chuquicamata"
+
+# ============================================================================
+# SECTORES ECONÓMICOS (10 tipos)
+# ============================================================================
+
+sectores_economico:
+  - nombre: "Energía renovable"
+    codigo: 1
+    descripcion: "Proyectos de generación de energía de fuentes renovables"
+    incluye:
+      - "Solar fotovoltaica"
+      - "Solar térmica (CSP)"
+      - "Eólica"
+      - "Hidroeléctrica de pasada"
+      - "Geotérmica"
+      - "Biomasa"
+      - "Mareomotriz"
+
+  - nombre: "Energía convencional"
+    codigo: 2
+    descripcion: "Proyectos de generación con combustibles fósiles"
+    incluye:
+      - "Termoeléctricas a carbón"
+      - "Termoeléctricas a gas"
+      - "Grandes hidroeléctricas con embalse"
+    nota: "Conflictos por cierre (descarbonización) van aquí"
+
+  - nombre: "Minería"
+    codigo: 3
+    descripcion: "Extracción de minerales vinculados a transición"
+    incluye:
+      - "Litio"
+      - "Cobre"
+      - "Cobalto"
+      - "Tierras raras"
+
+  - nombre: "Hidrocarburos"
+    codigo: 4
+    descripcion: "Petróleo, gas natural y derivados"
+    incluye:
+      - "Extracción petrolera"
+      - "Gas natural"
+      - "Refinerías"
+      - "GNL"
+
+  - nombre: "Infraestructura energética"
+    codigo: 5
+    descripcion: "Infraestructura para transmisión, distribución o almacenamiento"
+    incluye:
+      - "Líneas de transmisión"
+      - "Subestaciones"
+      - "Puertos energéticos"
+      - "Almacenamiento (baterías)"
+      - "Infraestructura de carga EV"
+
+  - nombre: "Agua/Recursos hídricos"
+    codigo: 6
+    descripcion: "Conflictos donde el AGUA es el recurso central en disputa, no un impacto secundario"
+    regla_principal: |
+      REGLA CLARA: El sector se define por el CAUSANTE del conflicto, no por el recurso afectado.
+      - Si una MINERA afecta agua → Sector: Minería
+      - Si una HIDROELÉCTRICA afecta agua → Sector: Energía renovable
+      - Si una TERMOELÉCTRICA afecta agua → Sector: Energía fósil
+      - Si el conflicto es por DERECHOS DE AGUA sin proyecto específico → Sector: Agua
+    usar_cuando:
+      - "Disputa legal por derechos de agua entre múltiples actores (sin proyecto específico)"
+      - "Conflicto por reforma al código de aguas vinculado a transición"
+      - "Disputa por asignación de derechos de agua para proyectos energéticos (sin un proyecto único)"
+      - "Conflicto por escasez hídrica que afecta múltiples proyectos de transición"
+    NO_usar_cuando:
+      - "Minera de litio seca humedal → Sector: Minería (la minera es el causante)"
+      - "Hidroeléctrica reduce caudal de río → Sector: Energía renovable (la central es el causante)"
+      - "H2V usa agua de mar → Sector: Energía renovable (el proyecto H2V es el causante)"
+      - "Termoeléctrica contamina bahía → Sector: Energía fósil (la termoeléctrica es el causante)"
+
+  - nombre: "Transporte/Electromovilidad"
+    codigo: 7
+    descripcion: "Transporte eléctrico e infraestructura asociada"
+    incluye:
+      - "Buses eléctricos"
+      - "Trenes eléctricos"
+      - "Electrolineras"
+
+  - nombre: "Industrial"
+    codigo: 8
+    descripcion: "Industrias con vínculo a transición energética"
+    incluye:
+      - "Industrias en zonas de sacrificio"
+      - "Industrias de tecnología limpia"
+
+  - nombre: "Territorial/Indígena"
+    codigo: 9
+    descripcion: "Cuando el eje central es el territorio o derechos indígenas"
+    aplicar_cuando: "El conflicto es principalmente territorial, no sectorial"
+
+  - nombre: "Múltiple"
+    codigo: 10
+    descripcion: "Conflicto que involucra claramente varios sectores"
+    nota: "Usar con moderación. Preferir el sector PRINCIPAL."
+
+# ============================================================================
+# MOTIVOS DE EXCLUSIÓN (12 motivos)
+# ============================================================================
+
+motivos_exclusion:
+  - codigo: 1
+    nombre: "Link no habilitado"
+    descripcion: "La URL no funciona, está detrás de paywall o el contenido no es accesible"
+    formato: "Motivo 1: Link no habilitado"
+
+  - codigo: 2
+    nombre: "Duplicado"
+    descripcion: "La misma noticia ya fue procesada anteriormente"
+    formato: "Motivo 2: Duplicado"
+
+  - codigo: 3
+    nombre: "No conflicto"
+    descripcion: |
+      No es un conflicto socioambiental vinculado a transición energética.
+      Incluye: conflictos de otros sectores (salmoneras, forestales, inmobiliarios),
+      minería no crítica (oro, plata), conflictos laborales puros sin dimensión 
+      ambiental, o cualquier tema sin vínculo energético.
+    formato: "Motivo 3: No conflicto"
+    usar_cuando:
+      - "Salmoneras y acuicultura"
+      - "Forestal tradicional"
+      - "Inmobiliario"
+      - "Minería de oro, plata, hierro"
+      - "Agricultura tradicional"
+      - "Conflictos urbanos no energéticos"
+      - "Conflictos laborales puros (huelgas por salarios, bonos, sin dimensión ambiental)"
+    nota_conflicto_laboral: |
+      CONFLICTO LABORAL: Usar Motivo 3 cuando sea disputa laboral pura (salarios, bonos, 
+      despidos) SIN dimensión ambiental. EXCEPCIÓN: Si el conflicto laboral es por 
+      condiciones insalubres, reconversión por cierre, o transición justa → INCLUIR.
+
+  - codigo: 4
+    nombre: "RSE/inauguración"
+    descripcion: "Noticia sobre responsabilidad social empresarial o inauguración sin conflicto"
+    formato: "Motivo 4: RSE/inauguración"
+
+  - codigo: 5
+    nombre: "No es de Chile"
+    descripcion: "El evento ocurrió fuera de Chile"
+    formato: "Motivo 5: No es de Chile"
+
+  - codigo: 6
+    nombre: "Artículo académico"
+    descripcion: "Es un paper académico o publicación científica, no una noticia periodística"
+    formato: "Motivo 6: Artículo académico"
+
+  - codigo: 7
+    nombre: "Malestar sin acción"
+    descripcion: |
+      La noticia describe preocupación, temor o malestar pero NO hay acción
+      contenciosa verificable (protesta, denuncia, recurso, etc.)
+    formato: "Motivo 7: Malestar sin acción"
+    ejemplos:
+      - "Comunidad preocupada por proyecto"
+      - "Vecinos temen impacto"
+      - "Habitantes expresan inquietud"
+
+  - codigo: 8
+    nombre: "Reportaje histórico"
+    descripcion: "Reportaje sobre un conflicto pasado sin acción contenciosa reciente"
+    formato: "Motivo 8: Reportaje histórico"
+
+  - codigo: 9
+    nombre: "Anuncio sin oposición"
+    descripcion: "Noticia sobre anuncio de proyecto pero sin conflicto ni oposición"
+    formato: "Motivo 9: Anuncio sin oposición"
+    ejemplos:
+      - "Empresa anuncia nuevo parque eólico"
+      - "Gobierno presenta plan de energía"
+
+  - codigo: 10
+    nombre: "Solo fallo judicial"
+    descripcion: "Noticia solo sobre sentencia judicial sin contexto de conflicto previo"
+    formato: "Motivo 10: Solo fallo judicial"
+
+  - codigo: 11
+    nombre: "Solo fiscalización"
+    descripcion: "Noticia solo sobre fiscalización o investigación sin acción contenciosa comunitaria"
+    formato: "Motivo 11: Solo fiscalización"
+
+  - codigo: 12
+    nombre: "Sin contenido"
+    descripcion: "El contenido es insuficiente para realizar el análisis (muy breve o vacío)"
+    formato: "Motivo 12: Sin contenido"
+
+  - codigo: 13
+    nombre: "Error de procesamiento"
+    descripcion: |
+      Error técnico durante el procesamiento (API fallida, validación, presupuesto excedido).
+      NO es un motivo de exclusión por contenido - es un error técnico que requiere reprocesamiento.
+    formato: "Motivo 13: Error de procesamiento"
+    requiere_reprocesamiento: true
+    nota: "Estas noticias deben reprocesarse cuando se resuelva el error técnico"
+
+# ============================================================================
+# ALIAS DE SECTORES (para compatibilidad con datos anteriores)
+# ============================================================================
+
+sectores_alias:
+  - alias: "Energía"
+    mapea_a: "Energía renovable"
+    codigo: 1
+  - alias: "Infraestructura"
+    mapea_a: "Infraestructura energética"
+    codigo: 5
+  - alias: "Transporte"
+    mapea_a: "Transporte/Electromovilidad"
+    codigo: 7
+
+# ============================================================================
+# COMPONENTES DEL PROMPT PARA IA
+# Estas secciones se inyectan dinámicamente en el prompt de clasificación
+# ============================================================================
+
+prompt_components:
+  
+  # Rol del analista
+  rol: |
+    Analista experto del proyecto FONDECYT sobre conflictos socioambientales 
+    vinculados a TRANSICIÓN ENERGÉTICA en Chile. Tu tarea es clasificar noticias 
+    periodísticas según criterios académicos rigurosos.
+  
+  # Definición de transición energética para el prompt
+  definicion_transicion: |
+    TRANSICIÓN ENERGÉTICA: Cambio desde un sistema energético basado en combustibles 
+    fósiles (carbón, petróleo, gas) hacia uno basado en energías limpias y renovables.
+    
+    INCLUYE:
+    - Generación renovable: solar, eólica, hidroeléctrica, geotérmica, hidrógeno verde
+    - Descarbonización: cierre de termoeléctricas a carbón
+    - Minerales críticos: litio y cobre SOLO si hay vínculo con tecnologías limpias
+    - Infraestructura: líneas de transmisión, subestaciones, almacenamiento
+    - Dimensión social: transición justa, reconversión laboral, justicia energética
+    - Zonas de sacrificio energéticas: Quintero, Tocopilla, Mejillones, Huasco, Coronel
+    
+    NO INCLUYE (Motivo 3: No conflicto):
+    - Acuicultura/salmonicultura
+    - Forestal tradicional (sin biomasa energética)
+    - Inmobiliario
+    - Minería no crítica (oro, plata, hierro, zinc)
+    - Agricultura tradicional
+    - Conflictos urbanos no energéticos
+  
+  # Definición de acción contenciosa para el prompt
+  definicion_accion: |
+    ACCIÓN CONTENCIOSA: Episodio ESPECÍFICO y VERIFICABLE donde actores realizan 
+    oposición, demanda o protesta.
+    
+    REQUISITOS:
+    - Acción concreta y observable (NO solo opiniones)
+    - Actores identificables (quién vs quién)
+    - Carácter contencioso (oposición, reclamo)
+    
+    MALESTAR SIN ACCIÓN (Motivo 7) - EXCLUIR:
+    - "Comunidad preocupada por proyecto"
+    - "Vecinos temen impacto ambiental"
+    - "Alcalde expresa inquietud"
+    
+    ACCIÓN CONTENCIOSA - INCLUIR:
+    - "Comunidad emite declaración pública rechazando proyecto"
+    - "Vecinos interponen recurso de protección"
+    - "Organizaciones realizan marcha de protesta"
+  
+  # Regla de oro
+  regla_oro: |
+    PREGUNTA CLAVE: ¿Este conflicto está relacionado con la transición desde 
+    combustibles fósiles hacia energías limpias?
+    - SÍ → INCLUIR
+    - NO → EXCLUIR (Motivo 3)
+    - DUDA en litio/cobre → INCLUIR con vinculo_transicion="Probable" y requiere_revision_manual=true
+  
+  # Validación especial para minerales críticos
+  validacion_minerales: |
+    LITIO Y COBRE - Validación especial:
+    
+    DIRECTO (incluir con confianza):
+    - Mención explícita: "litio para baterías", "cobre para paneles solares"
+    - Contrato con fabricante de tecnología limpia
+    - Ejemplo: "SQM amplía producción para Tesla"
+    
+    PROBABLE (incluir + revisión manual):
+    - Litio/cobre SIN mención de destino energético
+    - Empresas conocidas (SQM, Albemarle, Codelco) sin contexto
+    - Ejemplo: "Comunidades demandan a SQM por contaminación"
+    
+    INDIRECTO (incluir):
+    - Impacto hídrico/territorial de proyecto minero crítico
+    - Ejemplo: "Conflicto por agua causado por minera de litio"
+    
+    REGLA ANTI-PÉRDIDA: En duda con litio/cobre, INCLUIR con Probable + revisión manual.
+  
+  # Regla anti-sesgo (SUBORDINADA a regla anti-pérdida)
+  anti_bias: |
+    JERARQUÍA DE DECISIÓN (orden estricto):
+    
+    1. ¿Es litio/cobre/H2V/renovables? 
+       → INCLUIR SIEMPRE (usar "Probable" si no hay mención explícita de destino)
+       → La regla anti-pérdida tiene PRIORIDAD sobre anti-bias
+    
+    2. ¿Es claramente otro sector (salmoneras, forestal, oro/plata)?
+       → EXCLUIR (Motivo 3)
+    
+    3. ¿Zona gris SIN minerales críticos?
+       → Aplicar anti-bias: si la exclusión es más fácil de argumentar → EXCLUIR
+       → No forzar inclusión para "complacer"
+    
+    IMPORTANTE: Para investigación académica, priorizamos RECALL (no perder casos)
+    sobre PRECISION (excluir casos dudosos). La revisión manual afina después.
+  
+  # Instrucciones de clasificación
+  instrucciones: |
+    1. Lee TODO el contenido de la noticia
+    2. Aplica la REGLA DE ORO: ¿Es conflicto de transición energética?
+    3. Identifica la ACCIÓN CONTENCIOSA específica (malestar ≠ acción)
+    4. Para LITIO/COBRE: aplica validación especial
+    5. Justificación de transición debe tener mínimo 40 caracteres y ser específica
+    6. SIEMPRE incluye tu razonamiento paso a paso ANTES de la clasificación
+  
+  # Instrucciones de ubicación geográfica (CRÍTICO)
+  instrucciones_geograficas: |
+    AUTOCOMPLETADO GEOGRÁFICO ASCENDENTE:
+    
+    Usa tu conocimiento de la división político-administrativa de Chile para completar 
+    la jerarquía geográfica EN ORDEN ASCENDENTE (de menor a mayor):
+    
+    - Si la noticia menciona una LOCALIDAD → completa: comuna, provincia, región
+    - Si menciona una COMUNA → completa: provincia, región
+    - Si menciona una PROVINCIA → completa: región
+    - Si solo menciona REGIÓN → NO completes hacia abajo (dejar null)
+    
+    FORMATO DE NOMBRES:
+    - Región: usar prefijo "Región de..." (ej: "Región de Atacama", "Región Metropolitana")
+    - Provincia: nombre a secas SIN prefijo (ej: "Valparaíso", NO "Provincia de Valparaíso")
+    - Comuna: nombre a secas SIN prefijo (ej: "Puchuncaví", NO "Comuna de Puchuncaví")
+    - Localidad: nombre a secas (ej: "Quintero", "La Tirana")
+    
+    CASO ESPECIAL - LOCALIDAD = COMUNA (mismo nombre):
+    Muchas comunas tienen el mismo nombre que su cabecera comunal (ej: Quintero, Tocopilla, Puchuncaví).
+    
+    Reglas de desambiguación:
+    - Si la noticia dice "ciudad de X", "centro de X", "pueblo de X" → registrar en localidad + comuna
+    - Si dice "comuna de X", "territorio de X", "zona de X" → registrar solo en comuna (localidad=null)
+    - Si es ambiguo (solo dice "X") → registrar en AMBOS (localidad y comuna con mismo valor)
+    
+    EJEMPLOS:
+    1. Noticia menciona "Quintero" (ambiguo → registrar en ambos):
+       - localidad: "Quintero"
+       - comuna: "Quintero"
+       - provincia: "Valparaíso"
+       - region: "Región de Valparaíso"
+    
+    2. Noticia menciona "comuna de Tocopilla" (específico → solo comuna):
+       - localidad: null
+       - comuna: "Tocopilla"
+       - provincia: "Tocopilla"
+       - region: "Región de Antofagasta"
+    
+    3. Noticia menciona "Región de Atacama" (solo región):
+       - localidad: null
+       - comuna: null
+       - provincia: null
+       - region: "Región de Atacama"
+    
+    4. Noticia menciona "centro de Puchuncaví" (específico → localidad + comuna):
+       - localidad: "Puchuncaví"
+       - comuna: "Puchuncaví"
+       - provincia: "Valparaíso"
+       - region: "Región de Valparaíso"
+  
+  # Restricciones negativas - TRAMPAS COMUNES (evita estos errores)
+  negative_constraints: |
+    TRAMPAS COMUNES - NO HACER ESTO:
+    
+    1. NO clasificar "Robo de cables de cobre" como "Conflicto por minerales críticos". 
+       Es delincuencia común, no conflicto socioambiental.
+    
+    2. NO clasificar "Huelga por bono de término" como "Transición Justa" a menos que 
+       se mencione cierre de planta. Es conflicto laboral puro → Motivo 3.
+    
+    3. NO clasificar "Proyectos de hidrógeno gris (gas natural)" como "Hidrógeno Verde".
+       Solo H2V producido con renovables cuenta.
+    
+    4. NO clasificar "Conflicto por salarios en minera" como conflicto socioambiental.
+       Es conflicto laboral sin dimensión ambiental → Motivo 3.
+    
+    5. NO clasificar "Preocupación ciudadana" sin acción concreta como conflicto.
+       Debe haber acción verificable → Motivo 7.
+    
+    6. NO clasificar conflictos de salmonicultura, forestal tradicional o minería de 
+       oro/plata como transición energética → Motivo 3.
+    
+    7. NO incluir noticias sobre POLÍTICA INDUSTRIAL sin conflicto activo.
+       "Chile quiere desarrollar litio" sin oposición concreta → Motivo 9.
+    
+    8. NO incluir noticias sobre SEMINARIOS, CONGRESOS o EVENTOS ACADÉMICOS.
+       "Expertos discuten futuro del litio en seminario" → Motivo 3.
+    
+    9. NO incluir si NO hay ACTOR DEMANDADO ESPECÍFICO identificable.
+       Si no puedes identificar contra quién se dirige la acción → Motivo 7 o Motivo 9.
+    
+    10. NO confundir "EXIGE" o "PIDE" con acción contenciosa.
+        "Alcalde exige consulta" sin denuncia/recurso/protesta → Motivo 7.
+        SOLO es acción si hay: recurso judicial, denuncia formal, protesta física, toma.
+    
+    11. NO incluir ARTÍCULOS DE ANÁLISIS/OPINIÓN como conflictos.
+        "Luces y sombras del acuerdo X" → Es opinión, no conflicto → Motivo 9.
+        "Por qué Chile pierde competitividad" → Es análisis económico → Motivo 9.
+        "Columna: reflexiones sobre el litio" → Es columna de opinión → Motivo 9.
+        SOLO incluir si el artículo reporta una ACCIÓN CONTENCIOSA ESPECÍFICA.
+    
+    12. NO incluir noticias sobre AVANCES ADMINISTRATIVOS sin oposición.
+        "Avanza el pacto Codelco-SQM" → Es avance sin conflicto → Motivo 9.
+        "Autorizan cuota de extracción" → Es autorización sin oposición → Motivo 9.
+        "El detalle de los pagos del acuerdo" → Es información financiera → Motivo 9.
+        SOLO incluir si hay actores OPONIÉNDOSE al avance.
+    
+    13. NO incluir ANUNCIOS DE INVERSIÓN sin oposición social.
+        "Empresa invertirá US$600 millones en proyecto" → Es anuncio → Motivo 9.
+        "Nueva planta de litio en Atacama" → Es comunicado empresarial → Motivo 4/9.
+        SOLO incluir si hay comunidades/ONGs oponiéndose a la inversión.
+    
+    14. NO incluir noticias sobre DIFICULTADES EMPRESARIALES sin conflicto social.
+        "Inversionistas retiran interés en proyecto" → Es problema de negocios → Motivo 9.
+        "Proyecto enfrenta retrasos por financiamiento" → No es conflicto social → Motivo 9.
+        SOLO incluir si las dificultades son CAUSADAS por oposición de comunidades.
+  
+  # Validación obligatoria de actores (CRÍTICO)
+  validacion_actores: |
+    REGLA CRÍTICA: Para incluir una noticia, DEBE haber:
+    
+    1. ACTOR DEMANDANTE identificable (quién protesta/demanda/denuncia)
+    2. ACTOR DEMANDADO identificable (contra quién se dirige la acción)
+    3. ACCIÓN CONTENCIOSA específica (qué hizo el demandante)
+    
+    Si FALTA cualquiera de estos tres elementos → EXCLUIR
+    
+    EJEMPLOS DE EXCLUSIÓN POR FALTA DE ACTORES:
+    - "Chile desarrollará política de litio" → No hay demandante ni demandado
+    - "Expertos debaten impactos del litio" → No hay conflicto, es debate académico
+    - "Comunidad preocupada por proyecto" → No hay acción concreta
+    
+    EJEMPLOS DE INCLUSIÓN CON ACTORES CLAROS:
+    - "Comunidad lickanantay demanda a SQM ante tribunal" → ✓ Demandante + Demandado + Acción
+    - "ONG interpone recurso contra aprobación de parque eólico" → ✓ Los tres elementos
+    - "Vecinos bloquean acceso a faena minera" → ✓ Los tres elementos
+  
+  # Formato de salida JSON con Chain of Thought (razonamiento obligatorio)
+  output_excluir: |
+    {
+        "razonamiento_paso_a_paso": "1. [Qué identifiqué] 2. [Por qué no es conflicto de transición] 3. [Motivo específico de exclusión]",
+        "excluir": true,
+        "motivo_exclusion": "Motivo X: Nombre",
+        "explicacion_exclusion": "Razón específica (máx 200 chars)",
+        "resumen": "Resumen breve (máx 300 chars)",
+        "palabras_clave": null,
+        "tono_emocional": null,
+        "region": null,
+        "provincia": null,
+        "comuna": null,
+        "localidad": null,
+        "tipo_conflicto": null,
+        "tipo_accion": null,
+        "actor_demandante": null,
+        "actor_demandado": null,
+        "justificacion_transicion": null,
+        "notas": null,
+        "requiere_revision_manual": false
+    }
+  
+  output_incluir: |
+    {
+        "razonamiento_paso_a_paso": "1. ACTORES: Identifiqué a [Actor X] contra [Actor Y]. 2. ACCIÓN: La acción principal es [Acción] (es contenciosa porque...). 3. VÍNCULO: Se vincula a transición por [Razón específica]. 4. CATEGORIZACIÓN: Corresponde a [Tipo Conflicto] y NO a [Otro Tipo Similar] porque [Diferencia clave].",
+        "excluir": false,
+        "motivo_exclusion": null,
+        "tipo_conflicto": "Tipo de la lista",
+        "explicacion_conflicto": "Por qué este tipo (máx 150 chars)",
+        "tipo_accion": "Tipo de la lista",
+        "explicacion_accion": "Qué acción se realizó (máx 150 chars)",
+        "actor_demandante": "Actor de la lista",
+        "actor_demandante_especifico": "Nombre exacto o null",
+        "explicacion_demandante": "Quién demanda (máx 150 chars)",
+        "actor_demandado": "Actor de la lista",
+        "actor_demandado_especifico": "Nombre exacto o null",
+        "explicacion_demandado": "Contra quién (máx 150 chars)",
+        "proyecto_especifico": "Nombre del proyecto o null",
+        "resumen": "Narrativa del conflicto (máx 800 chars). Incluir: qué ocurrió, actores, lugar, fecha, acción.",
+        "palabras_clave": "3-5 términos clave separados por coma (ej: litio, SQM, Atacama, comunidades, agua)",
+        "tono_emocional": "Emoción predominante de los actores demandantes (ej: indignación, temor, desesperanza, frustración, esperanza, determinación). Breve descripción del tono.",
+        "region": "Región o null",
+        "provincia": "Provincia o null",
+        "comuna": "Comuna o null",
+        "localidad": "Localidad o null",
+        "escala_conflicto": "Local|Comunal|Provincial|Regional|Nacional",
+        "sector_economico": "Sector de la lista",
+        "vinculo_transicion": "Directo|Indirecto|Probable",
+        "justificacion_transicion": "Por qué es transición energética (mín 40 chars, máx 250 chars)",
+        "notas": "Contexto adicional o null",
+        "requiere_revision_manual": true/false
+    }
+
+# ============================================================================
+# CASOS LÍMITE Y TRAMPAS COMUNES
+# Sección para resolver ambigüedades frecuentes
+# ============================================================================
+
+casos_limite:
+  - caso: "Conflicto laboral en empresa energética SIN mención de transición/cierre"
+    ejemplo: "Sindicato de Enel protesta por bonos de término"
+    decision: "EXCLUIR (Motivo 3)"
+    justificacion: "Conflicto laboral puro sin dimensión ambiental ni vínculo con transición"
+    excepcion: "Si menciona cierre de planta o reconversión → INCLUIR como Transición Justa"
+  
+  - caso: "Delitos comunes en contexto energético"
+    ejemplo: "Robo de cables de cobre en subestación"
+    decision: "EXCLUIR (Motivo 3)"
+    justificacion: "Delincuencia común, no es acción contenciosa socioambiental"
+  
+  - caso: "Hidrógeno gris (gas natural)"
+    ejemplo: "Conflicto por planta de hidrógeno producido con gas"
+    decision: "EXCLUIR (Motivo 3)"
+    justificacion: "Solo H2V (producido con renovables) cuenta como transición energética"
+  
+  - caso: "Robo/sabotaje de paneles solares"
+    ejemplo: "Desconocidos roban paneles de parque solar"
+    decision: "EXCLUIR (Motivo 3)"
+    justificacion: "Delincuencia común, no conflicto socioambiental"
+    excepcion: "Si hay reivindicación política/ambiental → INCLUIR como Acción violenta"
+  
+  - caso: "Conflicto por salarios en minera de litio"
+    ejemplo: "Trabajadores de SQM en huelga por reajuste salarial"
+    decision: "EXCLUIR (Motivo 3)"
+    justificacion: "Conflicto laboral sin dimensión ambiental"
+    excepcion: "Si es por condiciones de trabajo insalubres/ambientales → INCLUIR"
+  
+  - caso: "Noticia menciona múltiples proyectos"
+    ejemplo: "Comunidades rechazan 3 parques eólicos en la región"
+    decision: "INCLUIR como único registro"
+    como_registrar: "proyecto_especifico: 'Parques eólicos regionales (múltiples)' o listar en notas"
+
+  - caso: "Autoridad 'exige' o 'pide' sin acción formal"
+    ejemplo: "Alcaldesa exige consulta indígena por proyecto de litio"
+    decision: "EXCLUIR (Motivo 7)"
+    justificacion: "Declaración de preocupación sin acción contenciosa verificable"
+    excepcion: "Si hay denuncia formal, recurso judicial o protesta → INCLUIR"
+
+  - caso: "Seminario o evento académico sobre transición energética"
+    ejemplo: "Expertos discuten futuro del litio en seminario internacional"
+    decision: "EXCLUIR (Motivo 3)"
+    justificacion: "Evento informativo, no conflicto socioambiental"
+
+  - caso: "Política industrial sin oposición"
+    ejemplo: "Chile quiere llevar el litio del salar a la fábrica"
+    decision: "EXCLUIR (Motivo 9)"
+    justificacion: "Anuncio de política sin conflicto ni oposición identificable"
+    excepcion: "Si hay oposición explícita de comunidades/ONGs → INCLUIR"
+
+  - caso: "Noticia sin actor demandado identificable"
+    ejemplo: "Comunidad preocupada por impactos del litio (sin empresa específica)"
+    decision: "EXCLUIR (Motivo 7)"
+    justificacion: "No hay actor demandado contra quien se dirija la acción"
+
+  - caso: "Artículo de análisis o balance de acuerdos"
+    ejemplo: "Luces y sombras del acuerdo Codelco-SQM"
+    decision: "EXCLUIR (Motivo 9)"
+    justificacion: "Es un artículo analítico/de opinión, no un conflicto activo"
+    excepcion: "Si menciona acción contenciosa específica (recurso, protesta) → INCLUIR"
+
+  - caso: "Noticia sobre avance de procesos SIN oposición"
+    ejemplo: "Avanza el pacto Codelco-SQM: autorizan cuota de extracción"
+    decision: "EXCLUIR (Motivo 9)"
+    justificacion: "Avance administrativo sin conflicto ni oposición activa"
+    excepcion: "Si hay actores oponiéndose al avance → INCLUIR"
+
+  - caso: "Anuncio de inversión empresarial sin oposición"
+    ejemplo: "Grupo Errázuriz invertirá US$600 millones en proyecto de litio"
+    decision: "EXCLUIR (Motivo 9)"
+    justificacion: "Anuncio corporativo sin conflicto socioambiental"
+    excepcion: "Si hay comunidades/ONGs oponiéndose a la inversión → INCLUIR"
+
+  - caso: "Detalles técnicos o financieros de acuerdos"
+    ejemplo: "El detalle de los pagos del acuerdo Codelco-SQM"
+    decision: "EXCLUIR (Motivo 9)"
+    justificacion: "Noticia informativa sobre términos de un acuerdo, no conflicto"
+
+# ============================================================================
+# TONOS EMOCIONALES (lista cerrada)
+# Para estandarizar clasificación de tono
+# ============================================================================
+
+tonos_emocionales_validos:
+  - nombre: "Indignación"
+    descripcion: "Rabia activa, llamado urgente a acción, denuncia enfática"
+  - nombre: "Temor"
+    descripcion: "Preocupación por impactos futuros, incertidumbre, ansiedad"
+  - nombre: "Frustración"
+    descripcion: "Cansancio por procesos sin respuesta, agotamiento, impotencia"
+  - nombre: "Esperanza"
+    descripcion: "Optimismo ante avances legales/políticos, expectativa positiva"
+  - nombre: "Desesperación"
+    descripcion: "Sensación de impotencia total, último recurso, rendición"
+  - nombre: "Determinación"
+    descripcion: "Compromiso firme a largo plazo, resiliencia, persistencia"
+
+# ============================================================================
+# CRITERIOS PARA REVISIÓN MANUAL
+# Cuándo marcar requiere_revision_manual=true
+# ============================================================================
+
+criterios_revision_manual:
+  - criterio: "vinculo_transicion='Probable'"
+    motivo: "Litio/cobre sin mención explícita de destino energético"
+  - criterio: "multiples_tipos_conflicto"
+    motivo: "Duda entre 2+ tipos de conflicto (ej: territorial vs uso de suelo)"
+  - criterio: "actores_difusos"
+    motivo: "No están claramente identificados quién demanda a quién"
+  - criterio: "noticia_ambigua"
+    motivo: "Contenido confuso o contradictorio"
+  - criterio: "caso_limite"
+    motivo: "Aplica algún caso límite de la sección anterior"

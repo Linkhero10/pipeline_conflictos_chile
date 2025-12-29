@@ -1,0 +1,25 @@
+# Dependencias del Filtrador FONDECYT
+
+# Core - Manipulación de datos
+pandas>=2.0.0
+openpyxl>=3.1.0
+numpy>=1.24.0
+
+# Visualización
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# APIs de IA
+openai>=1.0.0
+google-generativeai>=0.3.0
+
+# Mapas interactivos
+folium>=0.14.0
+
+# Configuración
+python-dotenv>=1.0.0
+PyYAML>=6.0.0
+
+# Validación y resiliencia
+pydantic>=2.0.0
+tenacity>=8.2.0
