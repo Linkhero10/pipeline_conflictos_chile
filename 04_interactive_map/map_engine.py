@@ -865,6 +865,71 @@ class GeneradorMapas:
                 font-size: 14px;
             }}
             
+            /* Estilos para búsqueda por término */
+            #search-container {{
+                margin-bottom: 15px;
+                padding-bottom: 15px;
+                border-bottom: 1px solid #eee;
+            }}
+            
+            #search-input {{
+                width: 100%;
+                padding: 10px 35px 10px 12px;
+                border: 2px solid #ddd;
+                border-radius: 6px;
+                font-size: 14px;
+                box-sizing: border-box;
+                transition: border-color 0.2s, box-shadow 0.2s;
+            }}
+            
+            #search-input:focus {{
+                border-color: #3498db;
+                box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+                outline: none;
+            }}
+            
+            #search-input::placeholder {{
+                color: #aaa;
+            }}
+            
+            .search-wrapper {{
+                position: relative;
+            }}
+            
+            #search-clear {{
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: none;
+                border: none;
+                color: #aaa;
+                cursor: pointer;
+                font-size: 16px;
+                padding: 5px;
+                display: none;
+            }}
+            
+            #search-clear:hover {{
+                color: #e74c3c;
+            }}
+            
+            #search-results-count {{
+                margin-top: 8px;
+                font-size: 12px;
+                color: #7f8c8d;
+            }}
+            
+            #search-results-count.has-results {{
+                color: #27ae60;
+            }}
+            
+            .highlight {{
+                background-color: #fff3cd;
+                padding: 1px 2px;
+                border-radius: 2px;
+            }}
+            
             .noticia-card {{
                 margin: 15px 0;
                 padding: 12px;
@@ -1140,6 +1205,19 @@ class GeneradorMapas:
                 </select>
             </div>
             
+            <!-- BÚSQUEDA POR TÉRMINO -->
+            <div id="search-container">
+                <label class="control-label" for="search-input">🔍 Buscar:</label>
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" 
+                           placeholder="Ej: litio, protesta, SQM..." 
+                           oninput="buscarTermino(this.value)"
+                           title="Buscar en título, resumen, actores, tipo de conflicto y acción">
+                    <button id="search-clear" onclick="limpiarBusqueda()" title="Limpiar búsqueda">✕</button>
+                </div>
+                <div id="search-results-count"></div>
+            </div>
+            
             <!-- FILTROS CATEGÓRICOS -->
             <div id="filtros-categoricos">
                 <h4>🎛️ Filtros de Clasificación</h4>
@@ -1245,6 +1323,9 @@ class GeneradorMapas:
             }};
             let filtroCategoricoActivo = false;
             let sidebarVisible = true;
+            
+            // 🔍 VARIABLES DE BÚSQUEDA POR TÉRMINO
+            let terminoBusqueda = '';
             
             // Mapeo de categorías a campos de datos
             const mapeoFiltros = {{
@@ -1415,12 +1496,109 @@ class GeneradorMapas:
                 document.getElementById('filtros-resumen').classList.remove('activo');
             }}
             
-            // Función para verificar si una noticia pasa los filtros categóricos
+            // 🔍 FUNCIÓN DE BÚSQUEDA POR TÉRMINO
+            function buscarTermino(valor) {{
+                terminoBusqueda = valor.toLowerCase().trim();
+                
+                // Mostrar/ocultar botón de limpiar
+                const clearBtn = document.getElementById('search-clear');
+                clearBtn.style.display = terminoBusqueda ? 'block' : 'none';
+                
+                console.log('🔍 Buscando:', terminoBusqueda);
+                
+                // Aplicar filtro (combinado con otros filtros activos)
+                if (filtroTemporalActivo) {{
+                    filtrarMapaPorAño(añoActual, modoAcumulado);
+                }} else {{
+                    filtrarDatosPorCategorias();
+                }}
+                
+                // Actualizar contador de resultados
+                actualizarContadorBusqueda();
+            }}
+            
+            // Limpiar búsqueda
+            function limpiarBusqueda() {{
+                terminoBusqueda = '';
+                document.getElementById('search-input').value = '';
+                document.getElementById('search-clear').style.display = 'none';
+                document.getElementById('search-results-count').textContent = '';
+                document.getElementById('search-results-count').classList.remove('has-results');
+                
+                console.log('🔍 Búsqueda limpiada');
+                
+                // Reaplicar otros filtros
+                if (filtroTemporalActivo) {{
+                    filtrarMapaPorAño(añoActual, modoAcumulado);
+                }} else if (filtroCategoricoActivo) {{
+                    filtrarDatosPorCategorias();
+                }} else {{
+                    restaurarDatosOriginales();
+                }}
+            }}
+            
+            // Verificar si una noticia contiene el término buscado
+            function noticiaContieneTermino(noticia) {{
+                if (!terminoBusqueda) return true;
+                
+                // Campos donde buscar
+                const camposBusqueda = [
+                    noticia.titulo || '',
+                    noticia.resumen || '',
+                    noticia.descripcion || '',
+                    noticia.tipo_conflicto || '',
+                    noticia.tipo_accion || '',
+                    noticia.actor_demandante || '',
+                    noticia.actor_demandante_especifico || '',
+                    noticia.actor_demandado || '',
+                    noticia.actor_demandado_especifico || '',
+                    noticia.sector_economico || '',
+                    noticia.proyecto_especifico || '',
+                    noticia.palabras_clave || ''
+                ];
+                
+                // Concatenar y buscar
+                const textoCompleto = camposBusqueda.join(' ').toLowerCase();
+                return textoCompleto.includes(terminoBusqueda);
+            }}
+            
+            // Actualizar contador de resultados de búsqueda
+            function actualizarContadorBusqueda() {{
+                if (!terminoBusqueda) {{
+                    document.getElementById('search-results-count').textContent = '';
+                    document.getElementById('search-results-count').classList.remove('has-results');
+                    return;
+                }}
+                
+                // Contar noticias que coinciden
+                let total = 0;
+                for (const nivel of ['regiones', 'provincias', 'comunas']) {{
+                    for (const territorio in statsData[nivel]) {{
+                        total += statsData[nivel][territorio].total_conflictos || 0;
+                    }}
+                }}
+                
+                const countEl = document.getElementById('search-results-count');
+                if (total > 0) {{
+                    countEl.textContent = `✓ ${{total}} resultado${{total !== 1 ? 's' : ''}} encontrado${{total !== 1 ? 's' : ''}}`;
+                    countEl.classList.add('has-results');
+                }} else {{
+                    countEl.textContent = 'Sin resultados para "' + terminoBusqueda + '"';
+                    countEl.classList.remove('has-results');
+                }}
+            }}
+            
+            // Función para verificar si una noticia pasa los filtros categóricos Y de búsqueda
             function noticiaPassaFiltros(noticia) {{
-                // Si no hay filtros activos, pasa
+                // 1. Primero verificar búsqueda por término
+                if (terminoBusqueda && !noticiaContieneTermino(noticia)) {{
+                    return false;
+                }}
+                
+                // 2. Si no hay filtros categóricos activos, pasa
                 if (!filtroCategoricoActivo) return true;
                 
-                // Verificar cada categoría (OR dentro de categoría, AND entre categorías)
+                // 3. Verificar cada categoría (OR dentro de categoría, AND entre categorías)
                 for (const [categoria, valores] of Object.entries(filtrosActivos)) {{
                     if (valores.length > 0) {{
                         const campoNoticia = mapeoNoticia[categoria];
