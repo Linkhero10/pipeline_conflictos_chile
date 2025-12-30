@@ -1,6 +1,6 @@
 # Licencia de Uso Restringido
 
-**Copyright (c) 2024 Felipe Araya Muñoz Shwenke**
+**Copyright (c) 2025 Felipe Andrés Muñoz Sandoval**
 
 Todos los derechos reservados.
 
@@ -53,4 +53,4 @@ El código, la arquitectura, los algoritmos y la metodología son propiedad inte
 
 ---
 
-*Última actualización: Diciembre 2024*
+*Última actualización: Diciembre 2025*

@@ -3125,7 +3125,7 @@ class GeneradorMapas:
         # Añadir control de capas para cambiar entre tiles (satélite, relieve, etc.)
         folium.LayerControl(
             position='bottomleft',
-            collapsed=True
+            collapsed=False  # Mantener siempre visible para evitar que se oculte al hacer clic
         ).add_to(mapa)
     
     def _preparar_estadisticas_regiones(self, df: pd.DataFrame) -> Dict:
