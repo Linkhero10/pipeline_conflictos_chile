@@ -614,12 +614,45 @@ class GeneradorMapas:
         }
         logger.info(f"🎛️ Filtros categóricos preparados: {len(filtros_categoricos['tipos_conflicto'])} tipos conflicto, {len(filtros_categoricos['tipos_accion'])} tipos acción")
         
-        # Crear mapa base
+        # Crear mapa base (sin tiles por defecto, los añadimos manualmente)
         mapa = folium.Map(
             location=self.chile_center,
             zoom_start=self.chile_zoom,
-            tiles='OpenStreetMap'
+            tiles=None  # No añadir tiles por defecto
         )
+        
+        # Añadir múltiples capas de tiles para que el usuario elija
+        folium.TileLayer(
+            tiles='OpenStreetMap',
+            name='🗺️ Calles',
+            control=True
+        ).add_to(mapa)
+        
+        folium.TileLayer(
+            tiles='CartoDB positron',
+            name='⬜ Minimalista',
+            control=True
+        ).add_to(mapa)
+        
+        folium.TileLayer(
+            tiles='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+            attr='Esri World Imagery',
+            name='🛰️ Satélite',
+            control=True
+        ).add_to(mapa)
+        
+        folium.TileLayer(
+            tiles='https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+            attr='Esri World Topo',
+            name='🏔️ Relieve',
+            control=True
+        ).add_to(mapa)
+        
+        folium.TileLayer(
+            tiles='CartoDB dark_matter',
+            name='🌙 Modo Oscuro',
+            control=True
+        ).add_to(mapa)
         
         # Convertir estadísticas a JSON para JavaScript
         import json
@@ -3088,6 +3121,12 @@ class GeneradorMapas:
         </script>
         """
         mapa.get_root().html.add_child(folium.Element(script))
+        
+        # Añadir control de capas para cambiar entre tiles (satélite, relieve, etc.)
+        folium.LayerControl(
+            position='bottomleft',
+            collapsed=True
+        ).add_to(mapa)
     
     def _preparar_estadisticas_regiones(self, df: pd.DataFrame) -> Dict:
         """Prepara estadísticas por región (reutiliza lógica existente)"""
